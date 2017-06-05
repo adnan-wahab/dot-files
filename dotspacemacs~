@@ -1,0 +1,433 @@
+;; -*- mode: emacs-lisp -*-
+;; This file is loaded by Spacemacs at startup.
+;; It must be stored in your home directory.
+
+(defun dotspacemacs/layers ()
+  "Configuration Layers declaration.
+You should not put any user code in this function besides modifying the variable
+values."
+  (setq-default
+   ;; Base distribution to use. This is a layer contained in the directory
+   ;; `+distribution'. For now available distributions are `spacemacs-base'
+   ;; or `spacemacs'. (default 'spacemacs)
+   dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-ask-for-lazy-installation t
+   ;; If non-nil layers with lazy install support are lazy installed.
+   ;; List of additional paths where to look for configuration layers.
+   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layers
+   '(
+     latex
+     rust
+     yaml
+     ruby
+     python
+     ipython-notebook
+     go
+     sql
+     shell-scripts
+     deft
+     typescript
+     markdown
+     html
+     javascript
+     shaders
+     ivy
+     osx
+     emacs-lisp
+     git
+     markdown
+     org
+     react
+     pdf-tools
+     ;; (wakatime :variables
+     ;;           wakatime-api-key  "54bed0b1-c19f-4d42-9704-e6a3718cf76c"
+     ;;           wakatime-cli-path "~/Documents/miniconda3/bin/wakatime"
+     ;;           )
+     )
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
+   dotspacemacs-additional-packages '(
+                                      org-beautify-theme
+                                      org-bullets
+                                      org-trello
+                                      org-gcal
+                                      )
+   dotspacemacs-frozen-packages '()
+   dotspacemacs-excluded-packages '(
+                                    evil-visualstar evil-magit evil-escape
+                                                    emmet-mode
+                                                    )
+   dotspacemacs-install-packages 'used-only
+   ))
+
+(defun dotspacemacs/init ()
+  "Initialization function.
+This function is called at the very startup of Spacemacs initialization
+before layers configuration.
+You should not put any user code in there besides modifying the variable
+values."
+  (setq-default
+   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-timeout 5
+   dotspacemacs-check-for-update nil
+   dotspacemacs-elpa-subdirectory nil
+   dotspacemacs-editing-style 'emacs
+   dotspacemacs-verbose-loading nil
+   dotspacemacs-startup-banner 'nil
+   dotspacemacs-startup-lists '((recents . 5)
+                                (agenda . 7)
+                                (todos . 7)
+                                (bookmarks . 7)
+
+
+                                )
+   dotspacemacs-startup-buffer-responsive t
+   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-themes '(spacemacs-dark)
+   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1)
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-ex-command-key ":"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-retain-visual-state-on-shift t
+   dotspacemacs-visual-line-move-text nil
+   dotspacemacs-ex-substitute-global nil
+   dotspacemacs-default-layout-name "Default"
+   dotspacemacs-display-default-layout nil
+   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-large-file-size 1
+   dotspacemacs-auto-save-file-location nil
+   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-enable-paste-transient-state nil
+   ;; Which-key delay in seconds. The which-key buffer is the popup listing
+   ;; the commands bound to the current keystroke sequence. (default 0.4)
+   dotspacemacs-which-key-delay .1
+   ;; Which-key frame position. Possible values are `right', `bottom' and
+   ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
+   ;; right; if there is insufficient space it displays it at the bottom.
+   ;; (default 'bottom)
+   dotspacemacs-which-key-position 'bottom
+   dotspacemacs-loading-progress-bar t
+   dotspacemacs-fullscreen-at-startup nil
+   ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
+   ;; Use to disable fullscreen animations in OSX. (default nil)
+   dotspacemacs-fullscreen-use-non-native nil
+   ;; If non nil the frame is maximized when Emacs starts up.
+   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
+   ;; (default nil) (Emacs 24.4+ only)
+   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-active-transparency 90
+   dotspacemacs-inactive-transparency 90
+   dotspacemacs-show-transient-state-title t
+   dotspacemacs-show-transient-state-color-guide t
+   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-smooth-scrolling t
+   dotspacemacs-line-numbers nil
+   dotspacemacs-folding-method 'origami
+   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smart-closing-parenthesis t
+   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-persistent-server nil
+   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-default-package-repository nil
+   dotspacemacs-whitespace-cleanup t
+   ))
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init', before layer configuration
+executes.
+ This function is mostly useful for variables that need to be set
+before packages are loaded. If you are unsure, you should try in setting them in`dotspacemacs/user-config' first."
+
+  )
+
+(defun dotspacemacs/user-config ()
+
+  (which-function-mode 1)
+  (show-paren-mode 1)
+
+  (defun close-all-buffers ()
+    (interactive)
+    (mapc 'kill-buffer (buffer-list)))
+
+  (defun smart-line-beginning ()
+    "Move point to the beginning of text
+on the current line; if that is already
+the current position of point, then move
+it to the beginning of the line."
+    (interactive)
+    (let ((pt (point)))
+      (beginning-of-line-text)
+      (when (eq pt (point))
+        (beginning-of-line))))
+setq package-check-signature nil)
+
+
+
+					;"client_email": "lord-342@adnanwahab-160519.iam.gserviceaccount.com",
+;(require 'org-gcal)
+
+;  (setq org-gcal-client-id "141608027679-a9q9rl5kubbi8r6cp3kqetuqnb3qq6nv.apps.googleusercontent.com",
+;        org-gcal-client-secret "MfZNkV52CCPYBub94ZljoqAb"
+;        org-gcal-file-alist '(("mail@adnanwahab.com" . "~/Dropbox/org-mode/gcal.org")))
+
+
+
+
+
+  (defun backward-kill-word-or-kill-region (&optional arg)
+    (interactive "p")
+    (if (region-active-p)
+        (kill-region (region-beginning) (region-end))
+      (backward-kill-word arg)))
+
+  (defun rename-file-and-buffer (new-name)
+    "Renames both current buffer and file it's visiting to NEW-NAME."
+    (interactive "sNew name: ")
+    (let ((name (buffer-name))
+          (filename (buffer-file-name)))
+      (if (not filename)
+          (message "Buffer '%s' is not visiting a file!" name)
+        (if (get-buffer new-name)
+            (message "A buffer named '%s' already exists!" new-name)
+          (progn (rename-file name new-name 1)
+                 (rename-buffer new-name)
+                 (set-visited-file-name new-name)
+                 (set-buffer-modified-p nil))))))
+
+  (defun show-dot-emacs-structure ()
+    "Show the outline-mode structure of ~/.emacs"
+    (interactive)
+    (occur "^;;;;+"))
+
+  (defun select-next-window ()
+    "Switch to the next window"
+    (interactive)
+    (select-window (next-window)))
+
+  (defun select-previous-window ()
+    "Switch to the previous window"
+    (interactive)
+    (select-window (previous-window)))
+
+  (defun eshell/clear ()
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)))
+
+  (defun mac-switch-meta nil
+    "switch meta between Option and Command"
+    (interactive)
+    (if (eq mac-option-modifier nil)
+        (progn
+          (setq mac-option-modifier 'meta)
+          (setq mac-command-modifier 'hyper)
+          )
+      (progn
+        (setq mac-option-modifier nil)
+        (setq mac-command-modifier 'meta)
+        )
+      )
+    )
+  (mac-switch-meta)
+
+;;;; keybindings
+  (global-set-key (kbd "C-c u") 'swiper-all)
+  (global-set-key "\C-x\C-k" 'kill-region)
+  (global-set-key "\M-k" '(lambda () (interactive) (kill-line 0)))
+
+  (global-set-key (kbd "M-. ") 'replace-regexp)
+  (global-set-key (kbd "C-c g") 'magit-status)
+
+
+  (global-set-key  (kbd "C-c <SPC>") 'eshell)
+
+                                        ;(global-set-key (kbd "C-c o") ')
+  ;; (global-set-key (kbd "M-/") 'hippie-expand)
+  ;; (global-unset-key (kbd "C-x DEL"))
+  ;; (global-unset-key (kbd "C-x C-k"))
+  ;; (global-unset-key (kbd "C-x C-b"))
+
+  ;; (global-set-key (kbd "C-<TAB>") 'execute-extended-command)
+  ;; (global-set-key (kbd "\C-;") 'occur)
+
+  ;; (global-set-key (kbd "M-'") 'select-previous-window)
+  ;; (global-set-key (kbd "M-,")'select-next-window)
+
+
+  ;;(global-set-key (kbd "C-.") 'execute-extended-command)
+  ;;counsel-set-variable
+
+  (global-set-key "\C-h" 'forward-char)
+  (global-set-key "\M-h" 'forward-word)
+
+  (global-set-key (kbd "C-'") 'select-previous-window)
+  (global-set-key (kbd "C-,") 'select-next-window)
+
+  (global-set-key "\C-w" 'backward-kill-word-or-kill-region)
+  (global-set-key "\C-c\C-v" 'end-of-buffer)
+  (global-set-key "\C-c\M-v" 'beginning-of-buffer)
+
+
+  (global-set-key (kbd "C-x C-m") 'execute-extended-command)
+  (global-set-key "\C-a" 'smart-line-beginning)
+
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c b") 'org-iswitchb)
+  (global-set-key (kbd "C-c C-c") 'org-capture)
+
+  (with-eval-after-load 'evil
+    (define-key evil-emacs-state-map (kbd "C-z") nil)
+    (global-unset-key (kbd "C-z"))
+    (global-set-key (kbd "C-z a") 'apropos)
+    (global-set-key (kbd "C-z k") 'describe-key)
+    (global-set-key (kbd "C-z b") 'counsel-descbinds)
+    (global-set-key (kbd "C-z .") 'view-local-help)
+    (global-set-key (kbd "C-z m") 'describe-mode)
+
+    (global-set-key (kbd "C-z f") 'counsel-describe-function)
+    )
+
+  (setq message-send-mail-function 'smtpmail-send-it
+        smtpmail-default-smtp-server "smtp.gmail.com")
+
+
+  (pdf-tools-install)
+
+
+  (with-eval-after-load 'org
+    (require 'org-beautify-theme)
+    (require 'org-bullets)
+
+                                        ;(add-hook 'org-mode-hook 'flyspell-mode)
+
+    (require 'org-trello)
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (let ((filename (buffer-file-name (current-buffer))))
+                  (when (and filename (string= "trello" (file-name-extension filename)))
+                    (org-trello-mode)))))
+    (custom-set-variables
+     '(orgtrello-log-level orgtrello-log-debug) ;; log level to debug
+     '(orgtrello-setup-use-position-in-checksum-computation nil) ;; checksum without position
+
+     )
+
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+    (require 'ob-python)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '( (python . t)
+        (shell . t)
+        (js . t)
+        (sqlite . t)
+        (emacs-lisp . t)
+        )
+
+     )
+    (setq org-directory "~/Dropbox/org-mode/")
+    (setq org-mobile-inbox-for-pull (concat org-directory "/flagged.org"))
+    (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+
+    (setq deft-directory "/Users/adnanwahab/Dropbox/org-mode")
+
+    (setq org-archive-location (concat org-directory "/flagged.org::* Done Tasks"))
+    (defun org-archive-done-tasks ()
+      (interactive)
+      (org-map-entries
+       (lambda ()
+         (org-archive-subtree)
+         (setq org-map-continue-from (outline-previous-heading)))
+       "/DONE" 'file)) 
+
+    (setq org-default-notes-file (concat org-directory "/you.org"))
+    (setq org-agenda-files (list org-directory))
+    (setq org-use-property-inheritance t)
+    (setq org-agenda-diary-file (concat org-directory "/diary.org"))
+
+    (setq org-agenda-category-icon-alist
+          '(("[Ee]macs" "/usr/share/icons/hicolor/16x16/apps/emacs-snapshot.png" nil nil :ascent center)
+            ("Naquadah" "~/.emacs.d/icons/org/naquadah.png" nil nil :ascent center)
+            ("Visitors" "~/.emacs.d/icons/org/visitors.png" nil nil :ascent center)
+            ("\\(Party\\|Celeb\\)" "~/.emacs.d/icons/org/party.png" nil nil :ascent center)
+            ("office" "~/.emacs.d/icons/org/wine.png" nil nil :ascent center)
+            ("Gnus" "~/.emacs.d/icons/org/gnus.png" nil nil :ascent center)
+            ("org" "~/.emacs.d/icons/org/org.png" nil nil :ascent center)
+            ("you" "~/.emacs.d/icons/org/medical.png" nil nil :ascent center)
+            ("Music" "~/.emacs.d/icons/org/music.png" nil nil :ascent center)
+            ("Wii" "~/.emacs.d/icons/org/wii.png" nil nil :ascent center)
+            ("Trip" "~/.emacs.d/icons/org/trip.png" nil nil :ascent center)
+            ("Train" "~/.emacs.d/icons/org/train.png" nil nil :ascent center)
+            ("Anniv" "~/.emacs.d/icons/org/anniversary.png" nil nil :ascent center)
+            ("Debian" "~/.emacs.d/icons/org/debian.png" nil nil :ascent center)
+            ("calendar" "~/.emacs.d/icons/org/tree.png" nil nil :ascent center)
+            ("awesome" "~/.emacs.d/icons/org/awesome.png" nil nil :ascent center)
+            ("blog" "~/.emacs.d/icons/org/book.png" nil nil :ascent center)
+            ("research" "~/.emacs.d/icons/org/openstack.png" nil nil :ascent center)
+            ("\\(Holidays\\|Vacation\\)" "~/.emacs.d/icons/org/holidays.png" nil nil :ascent center)
+            (".*" '(space . (:width (16))))))
+
+    (setq org-agenda-start-on-weekday 6)
+    (setq org-agenda-span 7)
+    (setq org-agenda-tags-column -100)
+    (setq org-agenda-sticky nil)
+    (setq org-agenda-inhibit-startup t)
+    (setq org-agenda-show-log t)
+    (setq org-hide-leading-stars nil)
+    (setq org-cycle-separator-lines 2)
+    (setq org-startup-indented t)
+    
+    (setq org-archive-mark-done t)
+    
+    (setq org-startup-folded t)
+    (org-defkey org-mode-map (kbd "C-,") 'select-next-window)
+    (org-defkey org-mode-map (kbd "C-c <SPC>") 'eshell)
+    (org-defkey org-mode-map (kbd "C-'") 'select-previous-window)
+                                        ;http://emacsconf2015.org/wiki/Videos/
+                                        ;http://doc.norang.ca/org-mode.html#KeyBindings
+                                        ;http://rix.si/~rrix/Hardcore%20Freestyle%20Emacs.html#sec-6-1-2
+    ;; http://emacs.stackexchange.com/
+    ;; http://doc.norang.ca/org-mode.html
+    ;; http://rix.si/~rrix/Hardcore%20Freestyle%20Emacs.html
+    ;; https://carlhu.com/orgmode
+    ;; http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html
+    )
+
+
+
+  ;; config cousnel
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js-indent-level 2)
+ '(js2-strict-missing-semi-warning nil)
+ '(package-selected-packages
+   (quote
+    (org-gcal org-trello dash-functional request-deferred deferred org-bullets org-beautify-theme auctex-latexmk auctex magit magit-popup git-commit with-editor dash pdf-tools tablist sql-indent insert-shebang go-guru go-eldoc go-mode fish-mode ein request websocket yapfify yaml-mode which-key wgrep web-mode web-beautify use-package toml-mode tide tern tagedit spacemacs-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder rbenv rake racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements pbcopy osx-trash osx-dictionary mmm-mode minitest markdown-toc magit-gitflow macrostep livid-mode live-py-mode less-css-mode launchctl json-mode js2-refactor js-doc ivy-hydra hy-mode htmlize help-fns+ helm-make gnuplot glsl-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flx exec-path-from-shell elisp-slime-nav deft cython-mode counsel-projectile coffee-mode chruby cargo bundler bind-map auto-compile anaconda-mode ace-window))))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
